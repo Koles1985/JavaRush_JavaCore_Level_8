@@ -1,6 +1,6 @@
 package main;
 
-import task_2_min_byte.Solution;
+import task_5_sorted_byte.Solution;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package task_3_most_frequent_bytes;
+package task_4_rarest_bytes;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -7,16 +7,16 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solution2 {
+public class Solution {
 
-	public Solution2() {
-
+	public Solution() {
 		String filePath = null;
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));) {
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
 			filePath = reader.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 		int[] byteArray = new int[256];
 		try (FileInputStream inputStream = new FileInputStream(filePath)) {
 			while (inputStream.available() > 0) {
@@ -26,26 +26,24 @@ public class Solution2 {
 			e.printStackTrace();
 		}
 
-		int maxCount = 0;
+		int minCount = Integer.MAX_VALUE;
 		for (int i = 0; i < byteArray.length; i++) {
-			if (byteArray[i] > maxCount)
-				maxCount = byteArray[i];
+			if (byteArray[i] < minCount && byteArray[i] > 0) {
+				minCount = byteArray[i];
+			}
 		}
 
-		List<Integer> regularByte = new ArrayList<>();
+		List<Integer> rarestBytes = new ArrayList<>();
 		for (int i = 0; i < byteArray.length; i++) {
-			if (byteArray[i] == maxCount)
-				regularByte.add(i);
+			if (byteArray[i] == minCount) {
+				rarestBytes.add(i);
+			}
 		}
 
-		for (int i : regularByte) {
+		for (int i : rarestBytes) {
 			char ch = (char) i;
-			System.out.println(i + " - " + ch);
+			System.out.print(i + " - " + ch + " .");
 		}
-
-		char symbol = 32;
-		System.out.println("Символ = " + symbol);
-
 	}
 
 }
