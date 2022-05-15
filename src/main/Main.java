@@ -1,10 +1,10 @@
 package main;
 
-import tascks_part2.task_5_download_exception.*;
+import tasks_part3.task_3_amigo_output_stream.Solution;
 
 public class Main {
 
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) throws Exception {
 		new Solution();
 
 	}
